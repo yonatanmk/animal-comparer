@@ -22,7 +22,7 @@ export default defineComponent({
   },
   setup(props) {
     onMounted(() => {
-      console.log("Component mounted");
+      console.log("Component 2 mounted");
       console.log({
         props,
         title: props.title,

@@ -6,11 +6,12 @@
     <button @click="decrementCounter">-</button>
     <div>Counter: {{ state.counter }}</div>
     <div>Prop: {{ msgProp }}</div>
+    <div>Computed: {{ compMessage }}</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUpdated, onUnmounted, reactive } from "vue";
+import { defineComponent, onMounted, onUpdated, onUnmounted, reactive, computed } from "vue";
 
 export default defineComponent({
   props: {
@@ -34,19 +35,21 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      console.log("Component mounted");
+      console.log("Component 1 mounted");
       console.log(props)
     });
 
     onUpdated(() => {
-      console.log("Component updated");
+      console.log("Component 1 updated");
     });
 
     onUnmounted(() => {
-      console.log("Component destroyed");
+      console.log("Component 1 destroyed");
     });
 
-    return { state, incrementCounter, decrementCounter };
+    const compMessage = computed(() => `${props.msgProp}---${state.counter}`)
+
+    return { state, incrementCounter, decrementCounter, compMessage };
   }
 });
 </script>
