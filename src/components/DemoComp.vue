@@ -3,35 +3,23 @@
     <h1>DEMO 1</h1>
     <div>{{ state.message }}</div>
     <button @click="incrementCounter">+</button>
+    <button @click="decrementCounter">-</button>
     <div>Counter: {{ state.counter }}</div>
     <div>Prop: {{ msgProp }}</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineProps, onMounted, onUpdated, onUnmounted, reactive } from "vue";
+import { defineComponent, onMounted, onUpdated, onUnmounted, reactive } from "vue";
 
-interface IDemoProps {
-  msgProp: string;
-}
-
-export default {
+export default defineComponent({
   props: {
     msgProp: {
       type: String,
       required: true
     }
   },
-  // props: ['msgProp'],
-  setup(props: any) {
-    const typedProps = defineProps<any>({
-      msgProp: props.msgProp,
-    });
-
-
-    console.log(props)
-    console.log(typedProps)
-
+  setup(props) {
     const state = reactive({
       message: "Hello, World!",
       counter: 0
@@ -41,10 +29,13 @@ export default {
       state.counter++;
     };
 
+    const decrementCounter = () => {
+      state.counter--;
+    };
+
     onMounted(() => {
       console.log("Component mounted");
       console.log(props)
-      console.log(typedProps)
     });
 
     onUpdated(() => {
@@ -55,9 +46,9 @@ export default {
       console.log("Component destroyed");
     });
 
-    return { state, incrementCounter };
+    return { state, incrementCounter, decrementCounter };
   }
-};
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
