@@ -42,47 +42,6 @@ const decrementCounter = () => {
 };
 
 const compMessage = computed(() => `${props.msgProp}---${counter.value}`)
-
-
-
-
-// export default defineComponent({
-//   props: {
-//     msgProp: {
-//       type: String,
-//       required: true
-//     }
-//   },
-//   setup(props) {
-//     const state = reactive({
-//       message: "Hello, World!",
-//       counter: 0
-//     });
-
-//     const incrementCounter = () => {
-//       state.counter++;
-//     };
-
-//     const decrementCounter = () => {
-//       state.counter--;
-//     };
-
-//     onMounted(() => {
-//       console.log("Component mounted");
-//       console.log(props)
-//     });
-
-//     onUpdated(() => {
-//       console.log("Component updated");
-//     });
-
-//     onUnmounted(() => {
-//       console.log("Component destroyed");
-//     });
-
-//     return { state, incrementCounter, decrementCounter };
-//   }
-// });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
