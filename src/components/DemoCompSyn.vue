@@ -13,9 +13,14 @@
 <script lang="ts" setup>
 import { defineProps, onMounted, onUpdated, onUnmounted, ref, computed } from "vue";
 
-const props = defineProps({
-  msgProp: String
-})
+interface IDemoProps {
+  msgProp: string;
+}
+
+// const props = defineProps({
+//   msgProp: String
+// })
+const props = defineProps<IDemoProps>();
 
 const message = ref("Hello, World!")
 const counter = ref(0)
